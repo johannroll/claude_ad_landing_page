@@ -59,7 +59,7 @@ export function Navigation({ items, className }: NavigationProps) {
                 </button>
 
                 {/* Dropdown Menu */}
-                {activeDropdown === item.label && (
+                {activeDropdown === item.label && item.children && (
                   <div className="absolute left-0 top-full mt-2 w-64 rounded-lg border border-gray-200 bg-white shadow-lg py-2 z-50">
                     {item.children.map((child) => {
                       const isChildActive = isActiveLink(child.href);

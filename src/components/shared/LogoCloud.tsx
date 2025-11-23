@@ -60,7 +60,7 @@ export function LogoCloud({
           : {};
 
         // Support both logo and src properties
-        const imageSrc = 'logo' in item ? item.logo : item.src || '';
+        const imageSrc = ('logo' in item ? item.logo : item.src) || '';
 
         return (
           <Container
