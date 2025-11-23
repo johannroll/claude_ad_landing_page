@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { getAssetPath } from '@/lib/constants';
 
 interface LogoProps {
   className?: string;
@@ -21,7 +22,7 @@ export function Logo({ className, size = 'md', variant = 'default' }: LogoProps)
   return (
     <div className={cn('flex items-center relative', className)}>
       <Image
-        src="/images/AirdocsLogoHTL.png"
+        src={getAssetPath('/images/AirdocsLogoHTL.png')}
         alt="Airdocs Global"
         width={dimensions.width}
         height={dimensions.height}

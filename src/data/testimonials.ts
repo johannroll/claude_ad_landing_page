@@ -1,3 +1,5 @@
+import { getAssetPath } from '@/lib/constants';
+
 export interface Testimonial {
   id: number;
   quote: string;
@@ -18,8 +20,8 @@ export const testimonials: Testimonial[] = [
     author: 'Kit Tong',
     role: 'Marketing Technology Manager',
     company: 'Generation',
-    image: '/images/testimonials/kit-tong.png',
-    logo: '/images/clients/generation.png',
+    image: getAssetPath('/images/testimonials/kit-tong.png'),
+    logo: getAssetPath('/images/clients/generation.png'),
     rating: 5,
     featured: true,
   },
@@ -30,8 +32,8 @@ export const testimonials: Testimonial[] = [
     author: 'Sarah Williams',
     role: 'Head of Operations',
     company: 'NextSense',
-    image: '/images/testimonials/sarah-williams.png',
-    logo: '/images/clients/nextsense.png',
+    image: getAssetPath('/images/testimonials/sarah-williams.png'),
+    logo: getAssetPath('/images/clients/nextsense.png'),
     rating: 5,
     featured: true,
   },
@@ -42,8 +44,8 @@ export const testimonials: Testimonial[] = [
     author: 'Michael Chen',
     role: 'IT Director',
     company: 'Nambawan Super',
-    image: '/images/testimonials/michael-chen.png',
-    logo: '/images/clients/nambawan.png',
+    image: getAssetPath('/images/testimonials/michael-chen.png'),
+    logo: getAssetPath('/images/clients/nambawan.png'),
     rating: 5,
     featured: true,
   },
