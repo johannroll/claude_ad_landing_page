@@ -1,0 +1,81 @@
+'use client';
+
+import React from 'react';
+import { CTAButton } from '@/components/shared/CTAButton';
+import { motion } from 'framer-motion';
+import { Star } from 'lucide-react';
+
+interface HeroProps {
+  className?: string;
+}
+
+export function Hero({ className }: HeroProps) {
+  return (
+    <section className={`container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 ${className || ''}`}>
+      <div className="max-w-4xl mx-auto text-center">
+        {/* Trust Indicator Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center gap-2 bg-airdocs-onahau/50 text-airdocs-blue px-4 py-2 rounded-full mb-6"
+        >
+          <div className="flex items-center gap-1">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+            ))}
+          </div>
+          <span className="text-sm font-semibold">Rated 9/10 on Aspire Leaderboard</span>
+        </motion.div>
+
+        {/* Main Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
+        >
+          Transform Your{' '}
+          <span className="bg-gradient-to-r from-airdocs-blue to-airdocs-blue-light bg-clip-text text-transparent">
+            Customer Communications
+          </span>
+        </motion.h1>
+
+        {/* Subheading */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-xl text-gray-600 mb-8 leading-relaxed"
+        >
+          Streamline document generation, delivery, and management at scale with intelligent CCM solutions
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <CTAButton variant="primary" size="md" href="#trial" showIcon>
+            Book a Trial
+          </CTAButton>
+          <CTAButton variant="outline" size="md" href="#solutions">
+            Explore Solutions
+          </CTAButton>
+        </motion.div>
+
+        {/* Additional Trust Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-12 text-sm text-gray-500"
+        >
+          Trusted by leading organizations across Australia and the Pacific
+        </motion.div>
+      </div>
+    </section>
+  );
+}

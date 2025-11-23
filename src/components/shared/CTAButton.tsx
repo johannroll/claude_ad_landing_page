@@ -40,7 +40,7 @@ export function CTAButton({
   ...props
 }: CTAButtonProps) {
   const buttonClasses = cn(
-    'font-semibold rounded-lg',
+    'font-semibold rounded-lg inline-flex items-center justify-center whitespace-nowrap',
     ctaVariants[variant],
     ctaSizes[size],
     'group',
@@ -49,11 +49,9 @@ export function CTAButton({
 
   const content = (
     <>
-      <span>{children}</span>
+      {children}
       {showIcon && (
-        <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
-          {icon || <ArrowRight className="h-4 w-4" />}
-        </span>
+        icon || <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" />
       )}
     </>
   );

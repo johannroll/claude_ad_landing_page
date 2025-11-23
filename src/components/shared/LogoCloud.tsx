@@ -4,15 +4,18 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { Client } from '@/data/clients';
 
 interface Logo {
   name: string;
-  src: string;
+  src?: string;
+  logo?: string;
   alt: string;
 }
 
 interface LogoCloudProps {
-  logos: Logo[];
+  logos?: Logo[];
+  clients?: Client[];
   className?: string;
   animated?: boolean;
   grayscale?: boolean;
@@ -28,11 +31,15 @@ const columnClasses = {
 
 export function LogoCloud({
   logos,
+  clients,
   className,
   animated = true,
   grayscale = true,
   columns = 4,
 }: LogoCloudProps) {
+  // Normalize data to use either logos or clients
+  const items = clients || logos || [];
+
   return (
     <div
       className={cn(
@@ -41,7 +48,7 @@ export function LogoCloud({
         className
       )}
     >
-      {logos.map((logo, index) => {
+      {items.map((item, index) => {
         const Container = animated ? motion.div : 'div';
         const animationProps = animated
           ? {
@@ -52,9 +59,12 @@ export function LogoCloud({
             }
           : {};
 
+        // Support both logo and src properties
+        const imageSrc = 'logo' in item ? item.logo : item.src || '';
+
         return (
           <Container
-            key={logo.name}
+            key={item.name}
             className={cn(
               'relative h-12 w-32 transition-all duration-300',
               grayscale && 'grayscale hover:grayscale-0 opacity-60 hover:opacity-100'
@@ -62,8 +72,8 @@ export function LogoCloud({
             {...animationProps}
           >
             <Image
-              src={logo.src}
-              alt={logo.alt}
+              src={imageSrc}
+              alt={item.alt}
               fill
               className="object-contain"
             />

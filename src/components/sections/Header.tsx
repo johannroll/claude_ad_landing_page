@@ -53,14 +53,14 @@ export function Header({ className }: HeaderProps) {
               <div className="hidden md:flex items-center gap-3">
                 <CTAButton
                   variant="outline"
-                  size="sm"
+                  size="md"
                   href="#contact"
                 >
                   Contact Sales
                 </CTAButton>
                 <CTAButton
                   variant="primary"
-                  size="sm"
+                  size="md"
                   href="#trial"
                   showIcon
                 >

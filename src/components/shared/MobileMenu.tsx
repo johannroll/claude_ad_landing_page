@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { NavigationItem } from '@/data/navigation';
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
@@ -21,6 +22,15 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ isOpen, onClose, items, className }: MobileMenuProps) {
+  const pathname = usePathname();
+
+  const isActiveLink = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
+  };
+
   // Prevent body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
@@ -83,31 +93,45 @@ export function MobileMenu({ isOpen, onClose, items, className }: MobileMenuProp
           <nav className="space-y-2">
             {items.map((item) => {
               const hasChildren = item.children && item.children.length > 0;
+              const isActive = isActiveLink(item.href);
 
               if (hasChildren) {
                 return (
                   <Accordion key={item.label} type="single" collapsible>
                     <AccordionItem value={item.label} className="border-none">
-                      <AccordionTrigger className="py-3 px-4 hover:bg-gray-50 rounded-lg hover:no-underline text-left font-medium text-gray-900">
+                      <AccordionTrigger
+                        className={cn(
+                          'py-3 px-4 hover:bg-gray-50 rounded-lg hover:no-underline text-left font-medium',
+                          isActive ? 'text-airdocs-blue' : 'text-gray-900'
+                        )}
+                      >
                         {item.label}
                       </AccordionTrigger>
                       <AccordionContent className="pt-2 pb-0">
                         <div className="space-y-1 pl-2">
-                          {item.children!.map((child) => (
-                            <Link
-                              key={child.label}
-                              href={child.href}
-                              onClick={onClose}
-                              className="block px-4 py-2.5 text-sm text-gray-700 hover:text-airdocs-blue hover:bg-airdocs-onahau rounded-lg transition-colors"
-                            >
-                              <div className="font-medium">{child.label}</div>
-                              {child.description && (
-                                <div className="text-xs text-gray-500 mt-0.5">
-                                  {child.description}
-                                </div>
-                              )}
-                            </Link>
-                          ))}
+                          {item.children!.map((child) => {
+                            const isChildActive = isActiveLink(child.href);
+                            return (
+                              <Link
+                                key={child.label}
+                                href={child.href}
+                                onClick={onClose}
+                                className={cn(
+                                  'block px-4 py-2.5 text-sm hover:bg-airdocs-onahau rounded-lg transition-colors',
+                                  isChildActive
+                                    ? 'text-airdocs-blue bg-airdocs-onahau font-semibold'
+                                    : 'text-gray-700 hover:text-airdocs-blue'
+                                )}
+                              >
+                                <div className="font-medium">{child.label}</div>
+                                {child.description && (
+                                  <div className="text-xs text-gray-500 mt-0.5">
+                                    {child.description}
+                                  </div>
+                                )}
+                              </Link>
+                            );
+                          })}
                         </div>
                       </AccordionContent>
                     </AccordionItem>
@@ -120,7 +144,12 @@ export function MobileMenu({ isOpen, onClose, items, className }: MobileMenuProp
                   key={item.label}
                   href={item.href}
                   onClick={onClose}
-                  className="block px-4 py-3 text-sm font-medium text-gray-900 hover:text-airdocs-blue hover:bg-gray-50 rounded-lg transition-colors"
+                  className={cn(
+                    'block px-4 py-3 text-sm font-medium rounded-lg transition-colors',
+                    isActive
+                      ? 'text-airdocs-blue bg-airdocs-onahau font-semibold'
+                      : 'text-gray-900 hover:text-airdocs-blue hover:bg-gray-50'
+                  )}
                 >
                   {item.label}
                 </Link>

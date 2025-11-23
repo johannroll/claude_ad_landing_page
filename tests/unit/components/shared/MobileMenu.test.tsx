@@ -3,6 +3,11 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MobileMenu } from '@/components/shared/MobileMenu';
 import { NavigationItem } from '@/data/navigation';
 
+// Mock next/navigation
+vi.mock('next/navigation', () => ({
+  usePathname: () => '/',
+}));
+
 const mockNavItems: NavigationItem[] = [
   {
     label: 'Home',
@@ -64,5 +69,56 @@ describe('MobileMenu', () => {
       fireEvent.click(backdrop);
       expect(onClose).toHaveBeenCalled();
     }
+  });
+
+  it('calls onClose when Escape key is pressed', () => {
+    const onClose = vi.fn();
+    render(<MobileMenu isOpen={true} onClose={onClose} items={mockNavItems} />);
+
+    // Simulate Escape key press
+    fireEvent.keyDown(document, { key: 'Escape' });
+
+    expect(onClose).toHaveBeenCalled();
+  });
+
+  it('does not call onClose when Escape is pressed and menu is closed', () => {
+    const onClose = vi.fn();
+    render(<MobileMenu isOpen={false} onClose={onClose} items={mockNavItems} />);
+
+    // Simulate Escape key press
+    fireEvent.keyDown(document, { key: 'Escape' });
+
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it('highlights active links', () => {
+    render(<MobileMenu isOpen={true} onClose={() => {}} items={mockNavItems} />);
+    const homeLink = screen.getByText('Home');
+
+    // Home link should be highlighted as we're on '/' pathname
+    expect(homeLink.className).toContain('text-airdocs-blue');
+  });
+
+  it('calls onClose when a navigation link is clicked', () => {
+    const onClose = vi.fn();
+    render(<MobileMenu isOpen={true} onClose={onClose} items={mockNavItems} />);
+
+    const homeLink = screen.getByText('Home');
+    fireEvent.click(homeLink);
+
+    expect(onClose).toHaveBeenCalled();
+  });
+
+  it('prevents body scroll when open', () => {
+    render(<MobileMenu isOpen={true} onClose={() => {}} items={mockNavItems} />);
+    expect(document.body.style.overflow).toBe('hidden');
+  });
+
+  it('restores body scroll when closed', () => {
+    const { rerender } = render(<MobileMenu isOpen={true} onClose={() => {}} items={mockNavItems} />);
+    expect(document.body.style.overflow).toBe('hidden');
+
+    rerender(<MobileMenu isOpen={false} onClose={() => {}} items={mockNavItems} />);
+    expect(document.body.style.overflow).toBe('');
   });
 });
