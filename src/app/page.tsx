@@ -9,6 +9,7 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { TechnologyPartners } from '@/components/sections/TechnologyPartners';
 import { AspireFeature } from '@/components/sections/AspireFeature';
 import { AboutSection } from '@/components/sections/AboutSection';
+import { ContactCTA } from '@/components/sections/ContactCTA';
 
 export default function Home() {
   return (
@@ -46,8 +47,8 @@ export default function Home() {
       {/* About Section */}
       <AboutSection />
 
-      {/* Temporary spacer */}
-      <div className="h-96"></div>
+      {/* Contact CTA Section */}
+      <ContactCTA />
     </main>
   );
 }
