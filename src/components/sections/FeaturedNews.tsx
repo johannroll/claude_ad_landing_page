@@ -43,7 +43,7 @@ export function FeaturedNews({ className }: FeaturedNewsProps) {
                 variant="outline"
                 size="md"
                 href="#trial"
-                className="border-white text-white hover:bg-white hover:text-airdocs-blue"
+                className="border-white bg-transparent text-white hover:bg-white hover:text-airdocs-blue"
               >
                 Try it Free
               </CTAButton>
