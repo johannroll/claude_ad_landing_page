@@ -6,6 +6,9 @@ import { SolutionsTabs } from '@/components/sections/SolutionsTabs';
 import { ValueProposition } from '@/components/sections/ValueProposition';
 import { ProblemSolution } from '@/components/sections/ProblemSolution';
 import { Testimonials } from '@/components/sections/Testimonials';
+import { TechnologyPartners } from '@/components/sections/TechnologyPartners';
+import { AspireFeature } from '@/components/sections/AspireFeature';
+import { AboutSection } from '@/components/sections/AboutSection';
 
 export default function Home() {
   return (
@@ -33,6 +36,15 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <Testimonials />
+
+      {/* Technology Partners Section */}
+      <TechnologyPartners />
+
+      {/* Aspire Feature Section */}
+      <AspireFeature />
+
+      {/* About Section */}
+      <AboutSection />
 
       {/* Temporary spacer */}
       <div className="h-96"></div>
