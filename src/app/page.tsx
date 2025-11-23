@@ -3,6 +3,9 @@ import { TrustedBy } from '@/components/sections/TrustedBy';
 import { FeaturedNews } from '@/components/sections/FeaturedNews';
 import { SolutionsOverview } from '@/components/sections/SolutionsOverview';
 import { SolutionsTabs } from '@/components/sections/SolutionsTabs';
+import { ValueProposition } from '@/components/sections/ValueProposition';
+import { ProblemSolution } from '@/components/sections/ProblemSolution';
+import { Testimonials } from '@/components/sections/Testimonials';
 
 export default function Home() {
   return (
@@ -21,6 +24,15 @@ export default function Home() {
 
       {/* Solutions Tabs */}
       <SolutionsTabs />
+
+      {/* Value Proposition Section */}
+      <ValueProposition />
+
+      {/* Problem/Solution Section */}
+      <ProblemSolution />
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* Temporary spacer */}
       <div className="h-96"></div>

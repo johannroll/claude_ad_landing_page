@@ -1,0 +1,7 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#3b82f6"/>
+  <circle cx="200" cy="150" r="60" fill="#fff"/>
+  <path d="M200 210 Q160 250, 120 300 L280 300 Q240 250, 200 210" fill="#fff"/>
+  <text x="200" y="350" font-family="Arial" font-size="20" fill="#fff" text-anchor="middle">Sarah Williams</text>
+  <text x="200" y="375" font-family="Arial" font-size="14" fill="#dbeafe" text-anchor="middle">NextSense</text>
+</svg>
