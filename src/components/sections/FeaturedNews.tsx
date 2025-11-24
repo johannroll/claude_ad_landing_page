@@ -10,7 +10,7 @@ interface FeaturedNewsProps {
 
 export function FeaturedNews({ className }: FeaturedNewsProps) {
   return (
-    <section className={`py-16 bg-gradient-to-r from-airdocs-blue to-airdocs-blue-dark ${className || ''}`}>
+    <section className={`py-16 bg-gradient-to-r from-airdocs-magenta to-airdocs-blue ${className || ''}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Content Side */}

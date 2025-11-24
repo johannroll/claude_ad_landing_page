@@ -17,6 +17,7 @@ export function SolutionsOverview({ className }: SolutionsOverviewProps) {
           title="Our Solutions"
           subtitle="Comprehensive CCM platform for all your communication needs"
           badge="Solutions"
+          badgeColor="indigo"
           className="mb-12"
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -11,12 +11,22 @@ interface SectionHeadingProps {
   className?: string;
   animated?: boolean;
   badge?: string;
+  badgeColor?: 'blue' | 'citrus' | 'magenta' | 'coral' | 'amber' | 'indigo';
 }
 
 const alignClasses = {
   left: 'text-left items-start',
   center: 'text-center items-center',
   right: 'text-right items-end',
+};
+
+const badgeColorClasses = {
+  blue: 'bg-airdocs-onahau text-airdocs-blue',
+  citrus: 'bg-airdocs-citrus/10 text-airdocs-citrus',
+  magenta: 'bg-airdocs-magenta/10 text-airdocs-magenta',
+  coral: 'bg-airdocs-coral/10 text-airdocs-coral',
+  amber: 'bg-airdocs-amber/10 text-airdocs-amber',
+  indigo: 'bg-airdocs-indigo/10 text-airdocs-indigo',
 };
 
 export function SectionHeading({
@@ -26,6 +36,7 @@ export function SectionHeading({
   className,
   animated = false,
   badge,
+  badgeColor = 'blue',
 }: SectionHeadingProps) {
   const Container = animated ? motion.div : 'div';
   const animationProps = animated
@@ -43,7 +54,10 @@ export function SectionHeading({
       {...animationProps}
     >
       {badge && (
-        <span className="inline-block px-4 py-1.5 bg-airdocs-onahau text-airdocs-blue rounded-full text-sm font-semibold w-fit">
+        <span className={cn(
+          "inline-block px-4 py-1.5 rounded-full text-sm font-semibold w-fit",
+          badgeColorClasses[badgeColor]
+        )}>
           {badge}
         </span>
       )}

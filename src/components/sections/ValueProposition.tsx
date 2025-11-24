@@ -8,6 +8,8 @@ interface ValueProp {
   title: string;
   description: string;
   benefits: string[];
+  color: string;
+  bgColor: string;
 }
 
 const valueProps: ValueProp[] = [
@@ -21,6 +23,8 @@ const valueProps: ValueProp[] = [
       'Streamline approval workflows',
       'Real-time tracking and analytics',
     ],
+    color: 'text-airdocs-citrus',
+    bgColor: 'bg-airdocs-citrus/10',
   },
   {
     icon: <DollarSign className="h-8 w-8" />,
@@ -32,6 +36,8 @@ const valueProps: ValueProp[] = [
       'Reduce errors and rework',
       'Scale without adding headcount',
     ],
+    color: 'text-airdocs-amber',
+    bgColor: 'bg-airdocs-amber/10',
   },
   {
     icon: <Heart className="h-8 w-8" />,
@@ -43,6 +49,8 @@ const valueProps: ValueProp[] = [
       'Faster response times',
       'Consistent brand experience',
     ],
+    color: 'text-airdocs-coral',
+    bgColor: 'bg-airdocs-coral/10',
   },
 ];
 
@@ -62,7 +70,7 @@ export function ValueProposition() {
               key={index}
               className="rounded-2xl bg-white p-8 shadow-sm transition-shadow hover:shadow-lg"
             >
-              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <div className={`mb-6 inline-flex h-16 w-16 items-center justify-center rounded-xl ${prop.bgColor} ${prop.color}`}>
                 {prop.icon}
               </div>
 
@@ -77,7 +85,7 @@ export function ValueProposition() {
               <ul className="space-y-3">
                 {prop.benefits.map((benefit, benefitIndex) => (
                   <li key={benefitIndex} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+                    <Check className={`mt-0.5 h-5 w-5 flex-shrink-0 ${prop.color}`} />
                     <span className="text-sm text-gray-700">{benefit}</span>
                   </li>
                 ))}
