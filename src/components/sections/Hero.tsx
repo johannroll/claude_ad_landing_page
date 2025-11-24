@@ -4,6 +4,7 @@ import React from 'react';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
+import { AnimatedWord } from '@/components/ui/animated-word';
 
 interface HeroProps {
   className?: string;
@@ -59,9 +60,19 @@ export function Hero({ className }: HeroProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
         >
-          Transform Your{' '}
+          <AnimatedWord
+            words={['Transform', 'Revolutionize', 'Elevate', 'Streamline']}
+            className="bg-gradient-to-r from-airdocs-blue to-airdocs-blue-light bg-clip-text text-transparent"
+            delay={1000}
+          />{' '}
+          Your{' '}
+          <AnimatedWord
+            words={['Customer', 'Business', 'Digital', 'Document']}
+            className="bg-gradient-to-r from-airdocs-blue to-airdocs-blue-light bg-clip-text text-transparent"
+            delay={1500}
+          />{' '}
           <span className="bg-gradient-to-r from-airdocs-blue to-airdocs-blue-light bg-clip-text text-transparent">
-            Customer Communications
+            Communications
           </span>
         </motion.h1>
 
