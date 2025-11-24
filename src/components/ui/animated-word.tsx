@@ -60,32 +60,35 @@ export function AnimatedWord({ words, className = '', delay = 0 }: AnimatedWordP
   }, [currentIndex, delay]);
 
   return (
-    <span className={`inline-block overflow-hidden relative ${className}`} style={{ height: '1.2em' }}>
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={`${words[currentIndex]}-${currentIndex}`}
-          initial={{
-            y: '100%',
-            opacity: 0,
-          }}
-          animate={{
-            y: 0,
-            opacity: 1,
-          }}
-          exit={{
-            y: '-100%',
-            opacity: 0,
-          }}
-          transition={{
-            duration: 0.5,
-            ease: [0.4, 0.0, 0.2, 1], // Custom easing for slot machine effect
-            opacity: { duration: 0.3 },
-          }}
-          className={`inline-block absolute left-0 ${fonts[fontIndex]} transition-all duration-150`}
-        >
-          {words[currentIndex]}
-        </motion.span>
-      </AnimatePresence>
+    <span className={`inline-block align-baseline ${className}`}>
+      <span className="inline-block overflow-hidden relative" style={{ verticalAlign: 'baseline' }}>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={`${words[currentIndex]}-${currentIndex}`}
+            initial={{
+              y: '100%',
+              opacity: 0,
+            }}
+            animate={{
+              y: 0,
+              opacity: 1,
+            }}
+            exit={{
+              y: '-100%',
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.5,
+              ease: [0.4, 0.0, 0.2, 1], // Custom easing for slot machine effect
+              opacity: { duration: 0.3 },
+            }}
+            className={`inline-block ${fonts[fontIndex]} transition-all duration-150`}
+            style={{ display: 'inline-block' }}
+          >
+            {words[currentIndex]}
+          </motion.span>
+        </AnimatePresence>
+      </span>
     </span>
   );
 }
