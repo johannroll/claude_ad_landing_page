@@ -11,8 +11,32 @@ interface HeroProps {
 
 export function Hero({ className }: HeroProps) {
   return (
-    <section className={`container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 ${className || ''}`}>
-      <div className="max-w-4xl mx-auto text-center">
+    <section className={`relative overflow-hidden ${className || ''}`}>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 -z-10">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-cyan-50/50" />
+
+        {/* Dot Pattern */}
+        <div
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage: `radial-gradient(circle, #80c5cf 1px, transparent 1px)`,
+            backgroundSize: '24px 24px',
+          }}
+        />
+
+        {/* Radial Gradient Overlay for Focus */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(circle at center, transparent 0%, rgba(255, 255, 255, 0.3) 40%, white 80%)',
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+        <div className="max-w-4xl mx-auto text-center">
         {/* Trust Indicator Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -75,6 +99,7 @@ export function Hero({ className }: HeroProps) {
         >
           Trusted by leading organizations across Australia and the Pacific
         </motion.div>
+        </div>
       </div>
     </section>
   );
