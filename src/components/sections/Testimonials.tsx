@@ -3,6 +3,7 @@
 import { AnimatedTestimonials, AnimatedTestimonial } from '@/components/ui/animated-testimonials';
 import { getFeaturedTestimonials } from '@/data/testimonials';
 import { SectionHeading } from '@/components/shared/SectionHeading';
+import { getAssetPath } from '@/lib/constants';
 
 export function Testimonials() {
   const featuredTestimonials = getFeaturedTestimonials();
@@ -13,7 +14,7 @@ export function Testimonials() {
       quote: testimonial.quote,
       name: testimonial.author,
       designation: `${testimonial.role} at ${testimonial.company}`,
-      src: testimonial.image || '/images/testimonials/placeholder.png',
+      src: testimonial.image || getAssetPath('/images/testimonials/placeholder.png'),
     })
   );
 

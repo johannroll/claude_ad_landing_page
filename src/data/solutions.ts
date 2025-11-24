@@ -1,3 +1,5 @@
+import { getAssetPath } from '@/lib/constants';
+
 export interface Solution {
   id: string;
   title: string;
@@ -35,7 +37,7 @@ export const solutions: Solution[] = [
       'Improve customer satisfaction scores',
       'Decrease operational costs',
     ],
-    image: '/images/solutions/correspondence.png',
+    image: getAssetPath('/images/solutions/correspondence.png'),
     color: '#10B981',
     gradient: 'from-emerald-500 to-teal-600',
   },
@@ -61,7 +63,7 @@ export const solutions: Solution[] = [
       'Improve compliance and security',
       'Enable remote signing',
     ],
-    image: '/images/solutions/agreements.png',
+    image: getAssetPath('/images/solutions/agreements.png'),
     color: '#3B82F6',
     gradient: 'from-blue-500 to-indigo-600',
   },
@@ -87,7 +89,7 @@ export const solutions: Solution[] = [
       'Improve delivery success rates',
       'Ensure regulatory compliance',
     ],
-    image: '/images/solutions/letters.png',
+    image: getAssetPath('/images/solutions/letters.png'),
     color: '#8B5CF6',
     gradient: 'from-violet-500 to-purple-600',
   },
@@ -113,7 +115,7 @@ export const solutions: Solution[] = [
       'Reduce failed deliveries by 80%',
       'Optimize delivery costs',
     ],
-    image: '/images/solutions/delivery.png',
+    image: getAssetPath('/images/solutions/delivery.png'),
     color: '#F59E0B',
     gradient: 'from-amber-500 to-orange-600',
   },
@@ -139,7 +141,7 @@ export const solutions: Solution[] = [
       'Global coverage in 190+ countries',
       'Cost-effective messaging',
     ],
-    image: '/images/solutions/sms.png',
+    image: getAssetPath('/images/solutions/sms.png'),
     color: '#EC4899',
     gradient: 'from-pink-500 to-rose-600',
   },
@@ -165,7 +167,7 @@ export const solutions: Solution[] = [
       'Enterprise-grade security',
       'Guaranteed uptime',
     ],
-    image: '/images/solutions/cloud.png',
+    image: getAssetPath('/images/solutions/cloud.png'),
     color: '#06B6D4',
     gradient: 'from-cyan-500 to-blue-600',
   },
