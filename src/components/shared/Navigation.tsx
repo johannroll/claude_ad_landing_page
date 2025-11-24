@@ -14,6 +14,7 @@ interface NavigationProps {
 
 export function Navigation({ items, className }: NavigationProps) {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
   const isActiveLink = (href: string) => {
@@ -27,6 +28,23 @@ export function Navigation({ items, className }: NavigationProps) {
     return item.children?.some((child) => isActiveLink(child.href)) || false;
   };
 
+  const handleMouseEnter = (label: string) => {
+    // Clear any pending close timeout
+    if (closeTimeout) {
+      clearTimeout(closeTimeout);
+      setCloseTimeout(null);
+    }
+    setActiveDropdown(label);
+  };
+
+  const handleMouseLeave = () => {
+    // Add a delay before closing the dropdown
+    const timeout = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 300); // 300ms delay
+    setCloseTimeout(timeout);
+  };
+
   return (
     <nav className={cn('hidden md:flex items-center gap-1', className)}>
       {items.map((item) => {
@@ -37,8 +55,8 @@ export function Navigation({ items, className }: NavigationProps) {
           <div
             key={item.label}
             className="relative"
-            onMouseEnter={() => hasChildren && setActiveDropdown(item.label)}
-            onMouseLeave={() => hasChildren && setActiveDropdown(null)}
+            onMouseEnter={() => hasChildren && handleMouseEnter(item.label)}
+            onMouseLeave={() => hasChildren && handleMouseLeave()}
           >
             {hasChildren ? (
               <>
@@ -60,7 +78,7 @@ export function Navigation({ items, className }: NavigationProps) {
 
                 {/* Dropdown Menu */}
                 {activeDropdown === item.label && item.children && (
-                  <div className="absolute left-0 top-full mt-2 w-64 rounded-lg border border-gray-200 bg-white shadow-lg py-2 z-50">
+                  <div className="absolute left-0 top-full mt-1 w-64 rounded-lg border border-gray-200 bg-white shadow-lg py-2 z-50">
                     {item.children.map((child) => {
                       const isChildActive = isActiveLink(child.href);
                       return (
