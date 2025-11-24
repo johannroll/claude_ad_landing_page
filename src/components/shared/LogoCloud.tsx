@@ -20,6 +20,7 @@ interface LogoCloudProps {
   animated?: boolean;
   grayscale?: boolean;
   columns?: 3 | 4 | 5 | 6;
+  conveyorBelt?: boolean;
 }
 
 const columnClasses = {
@@ -36,10 +37,66 @@ export function LogoCloud({
   animated = true,
   grayscale = true,
   columns = 4,
+  conveyorBelt = false,
 }: LogoCloudProps) {
   // Normalize data to use either logos or clients
   const items = clients || logos || [];
 
+  // Conveyor belt mode
+  if (conveyorBelt) {
+    // Duplicate items to create seamless loop
+    const duplicatedItems = [...items, ...items, ...items];
+
+    return (
+      <div className={cn('relative overflow-hidden', className)}>
+        <div
+          className="flex gap-12 animate-scroll"
+          style={{
+            width: 'fit-content',
+          }}
+        >
+          {duplicatedItems.map((item, index) => {
+            const imageSrc = ('logo' in item ? item.logo : item.src) || '';
+
+            return (
+              <div
+                key={`${item.name}-${index}`}
+                className={cn(
+                  'relative h-16 w-40 flex-shrink-0',
+                  grayscale && 'grayscale opacity-50'
+                )}
+              >
+                <Image
+                  src={imageSrc}
+                  alt={item.alt}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            );
+          })}
+        </div>
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-${100 / 3}%);
+            }
+          }
+          .animate-scroll {
+            animation: scroll 30s linear infinite;
+          }
+          .animate-scroll:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
+      </div>
+    );
+  }
+
+  // Grid mode (original)
   return (
     <div
       className={cn(

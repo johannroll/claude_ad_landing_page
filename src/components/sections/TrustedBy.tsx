@@ -20,7 +20,11 @@ export function TrustedBy({ className }: TrustedByProps) {
           </h2>
         </div>
 
-        <LogoCloud clients={featuredClients} />
+        <LogoCloud
+          clients={featuredClients}
+          conveyorBelt={true}
+          animated={false}
+        />
       </div>
     </section>
   );
