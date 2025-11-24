@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { NavigationItem } from '@/data/navigation';
@@ -14,7 +14,7 @@ interface NavigationProps {
 
 export function Navigation({ items, className }: NavigationProps) {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
   const isActiveLink = (href: string) => {
@@ -30,19 +30,18 @@ export function Navigation({ items, className }: NavigationProps) {
 
   const handleMouseEnter = (label: string) => {
     // Clear any pending close timeout
-    if (closeTimeout) {
-      clearTimeout(closeTimeout);
-      setCloseTimeout(null);
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
     }
     setActiveDropdown(label);
   };
 
   const handleMouseLeave = () => {
     // Add a delay before closing the dropdown
-    const timeout = setTimeout(() => {
+    closeTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
     }, 300); // 300ms delay
-    setCloseTimeout(timeout);
   };
 
   return (
