@@ -49,6 +49,7 @@ export function LogoCloud({
 
     return (
       <div className={cn('relative overflow-hidden', className)}>
+        {/* Scrolling container */}
         <div
           className="flex gap-12 animate-scroll"
           style={{
@@ -76,6 +77,11 @@ export function LogoCloud({
             );
           })}
         </div>
+
+        {/* Fade out edges */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent" />
+
         <style jsx>{`
           @keyframes scroll {
             0% {
@@ -87,9 +93,6 @@ export function LogoCloud({
           }
           .animate-scroll {
             animation: scroll 30s linear infinite;
-          }
-          .animate-scroll:hover {
-            animation-play-state: paused;
           }
         `}</style>
       </div>
