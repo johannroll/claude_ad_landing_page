@@ -14,7 +14,7 @@ export function Testimonials() {
       quote: testimonial.quote,
       name: testimonial.author,
       designation: `${testimonial.role} at ${testimonial.company}`,
-      src: testimonial.image || getAssetPath('/images/testimonials/placeholder.png'),
+      src: testimonial.image || getAssetPath('/images/testimonials/placeholder.svg'),
     })
   );
 

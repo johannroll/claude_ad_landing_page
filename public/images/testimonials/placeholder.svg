@@ -1,0 +1,16 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#94a3b8"/>
+
+  <!-- Circle background for icon -->
+  <circle cx="200" cy="200" r="120" fill="rgba(255, 255, 255, 0.2)"/>
+
+  <!-- Simple person icon -->
+  <circle cx="200" cy="170" r="40" fill="#ffffff"/>
+  <path d="M 140 280 Q 140 220 200 220 Q 260 220 260 280 L 260 300 L 140 300 Z" fill="#ffffff"/>
+
+  <!-- Text at bottom -->
+  <text x="200" y="360" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">
+    Testimonial
+  </text>
+</svg>
