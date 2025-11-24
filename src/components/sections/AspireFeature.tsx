@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Star, Award, TrendingUp, Users, CheckCircle } from 'lucide-react';
 import { CTAButton } from '@/components/shared/CTAButton';
 
@@ -39,13 +38,7 @@ export function AspireFeature() {
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Left Side - Rating Display */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center lg:text-left"
-          >
+          <div className="text-center lg:text-left">
             <div className="mb-6 inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 shadow-lg">
               <span className="text-2xl font-bold text-primary">Aspire</span>
               <span className="text-gray-300">|</span>
@@ -81,36 +74,26 @@ export function AspireFeature() {
             <CTAButton variant="primary" size="lg" href="#trial" showIcon>
               See Why We're Rated 9/10
             </CTAButton>
-          </motion.div>
+          </div>
 
           {/* Right Side - Feature Highlights */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <h3 className="mb-8 text-3xl font-bold text-gray-900">
               Why Organizations Choose Airdocs
             </h3>
 
             {features.map((feature, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + index * 0.1 }}
                 className="flex items-start gap-4 rounded-xl bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
               >
                 <div className="flex-shrink-0 rounded-lg bg-primary/10 p-3 text-primary">
                   {feature.icon}
                 </div>
                 <p className="text-lg text-gray-700">{feature.text}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

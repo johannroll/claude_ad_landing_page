@@ -52,13 +52,7 @@ export function Footer() {
         {/* Main Footer Content */}
         <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-6">
           {/* Company Info - Takes 2 columns on large screens */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-2"
-          >
+          <div className="lg:col-span-2">
             <Link href="/" className="inline-block">
               <Logo variant="white" className="mb-6" />
             </Link>
@@ -114,15 +108,10 @@ export function Footer() {
                 </motion.a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Solutions Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
+          <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
               Solutions
             </h3>
@@ -138,15 +127,10 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Company Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
               Company
             </h3>
@@ -162,15 +146,10 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Resources Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
+          <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
               Resources
             </h3>
@@ -186,15 +165,10 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Legal Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+          <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
               Legal
             </h3>
@@ -210,7 +184,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom Bar */}

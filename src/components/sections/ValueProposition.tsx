@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { TrendingUp, DollarSign, Heart, Check } from 'lucide-react';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 
@@ -47,28 +46,6 @@ const valueProps: ValueProp[] = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut' as const,
-    },
-  },
-};
-
 export function ValueProposition() {
   return (
     <section className="bg-gray-50 py-24">
@@ -79,17 +56,10 @@ export function ValueProposition() {
           align="center"
         />
 
-        <motion.div
-          className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
+        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {valueProps.map((prop, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={itemVariants}
               className="rounded-2xl bg-white p-8 shadow-sm transition-shadow hover:shadow-lg"
             >
               <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -112,9 +82,9 @@ export function ValueProposition() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

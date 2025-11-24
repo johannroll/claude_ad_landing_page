@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import {
   Clock,
   FileText,
@@ -48,28 +47,6 @@ const comparisons: ComparisonItem[] = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut' as const,
-    },
-  },
-};
-
 export function ProblemSolution() {
   return (
     <section className="bg-white py-24">
@@ -80,13 +57,7 @@ export function ProblemSolution() {
           align="center"
         />
 
-        <motion.div
-          className="mt-16 space-y-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
+        <div className="mt-16 space-y-8">
           {/* Header Row */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_auto_1fr]">
             <div className="text-center">
@@ -100,9 +71,8 @@ export function ProblemSolution() {
 
           {/* Comparison Items */}
           {comparisons.map((comparison, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={itemVariants}
               className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_auto_1fr]"
             >
               {/* Problem */}
@@ -129,22 +99,16 @@ export function ProblemSolution() {
                   {comparison.solutionText}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* CTA Section */}
-        <motion.div
-          className="mt-12 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-        >
+        <div className="mt-12 text-center">
           <p className="text-lg text-gray-600">
             Ready to transform your customer communications?
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

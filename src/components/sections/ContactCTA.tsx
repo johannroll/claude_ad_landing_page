@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { CheckCircle, Clock, HeadphonesIcon, Shield } from 'lucide-react';
 
@@ -39,13 +38,7 @@ export function ContactCTA() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
-          >
+          <div className="mb-16 text-center">
             <div className="mb-4 inline-flex items-center gap-2 text-primary">
               <div className="h-px w-8 bg-primary"></div>
               <span className="text-sm font-semibold uppercase tracking-wider">
@@ -62,17 +55,11 @@ export function ContactCTA() {
               Let's discuss how Airdocs can help you deliver exceptional customer
               experiences. Fill out the form below and we'll be in touch shortly.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left Side - Benefits */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-8"
-            >
+            <div className="space-y-8">
               <div>
                 <h3 className="mb-6 text-2xl font-bold text-gray-900">
                   What to Expect
@@ -80,12 +67,8 @@ export function ContactCTA() {
 
                 <div className="space-y-6">
                   {benefits.map((benefit, index) => (
-                    <motion.div
+                    <div
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
                       className="flex items-start gap-4"
                     >
                       <div className="flex-shrink-0 rounded-lg bg-primary/10 p-3 text-primary">
@@ -99,7 +82,7 @@ export function ContactCTA() {
                           {benefit.description}
                         </p>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -135,22 +118,16 @@ export function ContactCTA() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Right Side - Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="rounded-2xl bg-white p-8 shadow-lg"
-            >
+            <div className="rounded-2xl bg-white p-8 shadow-lg">
               <h3 className="mb-6 text-2xl font-bold text-gray-900">
                 Send Us a Message
               </h3>
 
               <ContactForm />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

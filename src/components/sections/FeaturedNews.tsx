@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { Sparkles } from 'lucide-react';
 
@@ -13,13 +12,7 @@ export function FeaturedNews({ className }: FeaturedNewsProps) {
   return (
     <section className={`py-16 bg-gradient-to-r from-airdocs-blue to-airdocs-blue-dark ${className || ''}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-8 items-center"
-        >
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Content Side */}
           <div className="text-white">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
@@ -52,13 +45,7 @@ export function FeaturedNews({ className }: FeaturedNewsProps) {
 
           {/* Visual Side */}
           <div className="relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20"
-            >
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
               <div className="aspect-video bg-white/5 rounded-lg flex items-center justify-center">
                 <div className="text-center">
                   <div className="inline-flex p-8 rounded-full bg-white/20 backdrop-blur-sm mb-4">
@@ -83,13 +70,13 @@ export function FeaturedNews({ className }: FeaturedNewsProps) {
                   <div className="text-xs text-white/80">Response Time</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Decorative Elements */}
             <div className="absolute -z-10 top-10 -right-10 w-72 h-72 bg-airdocs-blue-light rounded-full blur-3xl opacity-30"></div>
             <div className="absolute -z-10 -bottom-10 -left-10 w-72 h-72 bg-airdocs-spray rounded-full blur-3xl opacity-20"></div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

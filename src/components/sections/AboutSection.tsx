@@ -1,7 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Building2, Users, Globe, Award } from 'lucide-react';
 import { CTAButton } from '@/components/shared/CTAButton';
 
@@ -40,13 +38,7 @@ export function AboutSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Side - Image/Visual */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="relative h-[400px] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 lg:h-[500px]">
               {/* Placeholder for company image/illustration */}
               <div className="flex h-full items-center justify-center">
@@ -60,13 +52,7 @@ export function AboutSection() {
             </div>
 
             {/* Stats Cards Overlay */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="absolute -bottom-8 left-4 right-4 grid grid-cols-2 gap-4 md:grid-cols-4"
-            >
+            <div className="absolute -bottom-8 left-4 right-4 grid grid-cols-2 gap-4 md:grid-cols-4">
               {stats.map((stat, index) => (
                 <div
                   key={index}
@@ -81,17 +67,11 @@ export function AboutSection() {
                   <div className="text-xs text-gray-600">{stat.label}</div>
                 </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Right Side - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col justify-center pt-12 lg:pt-0"
-          >
+          <div className="flex flex-col justify-center pt-12 lg:pt-0">
             <div className="mb-4 inline-flex items-center gap-2 text-primary">
               <div className="h-px w-8 bg-primary"></div>
               <span className="text-sm font-semibold uppercase tracking-wider">
@@ -146,7 +126,7 @@ export function AboutSection() {
                 Learn More
               </CTAButton>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
