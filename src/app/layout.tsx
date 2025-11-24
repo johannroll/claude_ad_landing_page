@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Airdocs Global - Customer Communications Management",
   description: "Modern CCM SaaS platform for clever correspondence, agreements, letters, delivery, SMS, and cloud solutions.",
+  icons: {
+    icon: '/images/airdocsFlaticon.png',
+  },
 };
 
 export default function RootLayout({
