@@ -24,7 +24,7 @@ export function SectionHeading({
   subtitle,
   align = 'center',
   className,
-  animated = true,
+  animated = false,
   badge,
 }: SectionHeadingProps) {
   const Container = animated ? motion.div : 'div';
