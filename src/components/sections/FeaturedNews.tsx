@@ -54,7 +54,7 @@ export function FeaturedNews({ className }: FeaturedNewsProps) {
                   loop
                   playsInline
                 >
-                  <source src="/images/FullSizeRender.MP4" type="video/mp4" />
+                  <source src="/claude_ad_landing_page/images/FullSizeRender.MP4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
