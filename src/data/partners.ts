@@ -13,7 +13,7 @@ export interface Partner {
 export const partners: Partner[] = [
   {
     name: 'DocuSign',
-    logo: getAssetPath('/images/partners/docusign.svg'),
+    logo: getAssetPath('/images/partners/Docusign.png'),
     alt: 'DocuSign logo',
     category: 'eSignature',
     description: 'Leading eSignature and digital transaction management',
@@ -22,7 +22,7 @@ export const partners: Partner[] = [
   },
   {
     name: 'OneSpan',
-    logo: getAssetPath('/images/partners/onespan.svg'),
+    logo: getAssetPath('/images/partners/Onespan.png'),
     alt: 'OneSpan logo',
     category: 'eSignature',
     description: 'Digital identity and eSignature solutions',
@@ -31,7 +31,7 @@ export const partners: Partner[] = [
   },
   {
     name: 'Compart',
-    logo: getAssetPath('/images/partners/compart.svg'),
+    logo: getAssetPath('/images/partners/Compart.png'),
     alt: 'Compart logo',
     category: 'Document',
     description: 'Enterprise document processing and composition',
@@ -40,7 +40,7 @@ export const partners: Partner[] = [
   },
   {
     name: 'Microsoft Azure',
-    logo: getAssetPath('/images/partners/azure.svg'),
+    logo: getAssetPath('/images/partners/MicrosoftAzure.png'),
     alt: 'Microsoft Azure logo',
     category: 'Cloud',
     description: 'Cloud computing platform and services',
@@ -49,7 +49,7 @@ export const partners: Partner[] = [
   },
   {
     name: 'AWS',
-    logo: getAssetPath('/images/partners/aws.svg'),
+    logo: getAssetPath('/images/partners/AWS.png'),
     alt: 'Amazon Web Services logo',
     category: 'Cloud',
     description: 'Comprehensive cloud computing platform',
@@ -58,7 +58,7 @@ export const partners: Partner[] = [
   },
   {
     name: 'Salesforce',
-    logo: getAssetPath('/images/partners/salesforce.svg'),
+    logo: getAssetPath('/images/partners/Saleforce.png'),
     alt: 'Salesforce logo',
     category: 'Integration',
     description: 'CRM and customer success platform',
