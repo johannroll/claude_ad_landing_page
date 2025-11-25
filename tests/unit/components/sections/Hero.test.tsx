@@ -5,8 +5,11 @@ import { Hero } from '@/components/sections/Hero';
 describe('Hero', () => {
   it('renders the main headline', () => {
     render(<Hero />);
-    expect(screen.getByText(/Transform Your/i)).toBeInTheDocument();
-    expect(screen.getByText(/Customer Communications/i)).toBeInTheDocument();
+    // Check for animated words
+    expect(screen.getByText('Transform')).toBeInTheDocument();
+    expect(screen.getByText(/Your/i)).toBeInTheDocument();
+    expect(screen.getByText('Customer')).toBeInTheDocument();
+    expect(screen.getByText(/Communications/i)).toBeInTheDocument();
   });
 
   it('renders the subheading', () => {

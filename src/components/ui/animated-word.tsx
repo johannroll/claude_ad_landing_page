@@ -19,8 +19,14 @@ const fonts = [
 export function AnimatedWord({ words, className = '', delay = 0 }: AnimatedWordProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fontIndex, setFontIndex] = useState(0);
+  const [hasAnimatedIn, setHasAnimatedIn] = useState(false);
 
   useEffect(() => {
+    // Animate in the first word after a brief moment
+    const initialTimeout = setTimeout(() => {
+      setHasAnimatedIn(true);
+    }, 100);
+
     // Start the animation after the delay
     const startTimeout = setTimeout(() => {
       // Word rotation interval (4 seconds)
@@ -31,7 +37,10 @@ export function AnimatedWord({ words, className = '', delay = 0 }: AnimatedWordP
       return () => clearInterval(wordInterval);
     }, delay);
 
-    return () => clearTimeout(startTimeout);
+    return () => {
+      clearTimeout(initialTimeout);
+      clearTimeout(startTimeout);
+    };
   }, [words.length, delay]);
 
   useEffect(() => {
@@ -65,10 +74,17 @@ export function AnimatedWord({ words, className = '', delay = 0 }: AnimatedWordP
         <AnimatePresence mode="wait">
           <motion.span
             key={`${words[currentIndex]}-${currentIndex}`}
-            initial={{
-              y: '100%',
-              opacity: 0,
-            }}
+            initial={
+              hasAnimatedIn
+                ? {
+                    y: '100%',
+                    opacity: 0,
+                  }
+                : {
+                    y: 0,
+                    opacity: 1,
+                  }
+            }
             animate={{
               y: 0,
               opacity: 1,

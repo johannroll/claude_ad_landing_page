@@ -53,7 +53,10 @@ describe('TrustedBy', () => {
 
   it('renders client logos with correct alt text', () => {
     render(<TrustedBy />);
-    expect(screen.getByAltText('Test Company 1 logo')).toBeInTheDocument();
-    expect(screen.getByAltText('Test Company 2 logo')).toBeInTheDocument();
+    // In conveyor belt mode, logos are duplicated 3 times for seamless scrolling
+    const company1Logos = screen.getAllByAltText('Test Company 1 logo');
+    const company2Logos = screen.getAllByAltText('Test Company 2 logo');
+    expect(company1Logos.length).toBeGreaterThan(0);
+    expect(company2Logos.length).toBeGreaterThan(0);
   });
 });
