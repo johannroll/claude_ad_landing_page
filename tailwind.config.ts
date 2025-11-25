@@ -80,8 +80,8 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-dm-sans)", "DM Sans", "sans-serif"],
-        heading: ["var(--font-manrope)", "Manrope", "sans-serif"],
+        sans: ["var(--font-plus-jakarta-sans)", "Plus Jakarta Sans", "sans-serif"],
+        heading: ["var(--font-plus-jakarta-sans)", "Plus Jakarta Sans", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {

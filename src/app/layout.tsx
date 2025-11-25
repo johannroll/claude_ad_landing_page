@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
-import { Manrope, DM_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
 
-const manrope = Manrope({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-manrope",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-dm-sans",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-plus-jakarta-sans",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${manrope.variable} ${dmSans.className}`}>
+      <body className={plusJakartaSans.className}>
         <Header />
         {children}
         <Footer />
