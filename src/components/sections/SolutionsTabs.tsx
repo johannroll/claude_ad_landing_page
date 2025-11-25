@@ -16,6 +16,7 @@ interface SolutionsTabsProps {
 
 export function SolutionsTabs({ className }: SolutionsTabsProps) {
   const [activeTab, setActiveTab] = useState(solutions[0].id);
+  const activeSolution = solutions.find(s => s.id === activeTab);
 
   return (
     <section className={`py-20 bg-white ${className || ''}`}>
@@ -34,15 +35,29 @@ export function SolutionsTabs({ className }: SolutionsTabsProps) {
           <TabsList className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 mb-12 bg-transparent h-auto p-0">
             {solutions.map((solution) => {
               const IconComponent = Icons[solution.icon as IconName] as React.ComponentType<{ className?: string }>;
+              const isActive = activeTab === solution.id;
 
               return (
                 <TabsTrigger
                   key={solution.id}
                   value={solution.id}
-                  className="flex flex-col items-center gap-2 p-4 rounded-lg border-2 border-gray-200 data-[state=active]:border-airdocs-blue data-[state=active]:bg-airdocs-onahau hover:border-airdocs-spray transition-all duration-300 bg-white"
+                  className="flex flex-col items-center gap-2 p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 bg-white data-[state=active]:shadow-lg"
+                  style={isActive ? {
+                    borderColor: solution.color,
+                    backgroundColor: `${solution.color}10`
+                  } : {}}
                 >
-                  <IconComponent className="h-6 w-6" />
-                  <span className="text-sm font-semibold">{solution.shortTitle}</span>
+                  <div
+                    className="p-2 rounded-lg transition-all duration-300"
+                    style={isActive ? {
+                      background: `linear-gradient(to bottom right, ${solution.color}, ${solution.color}dd)`
+                    } : {}}
+                  >
+                    <IconComponent className={isActive ? "h-6 w-6 text-white" : "h-6 w-6 text-gray-600"} />
+                  </div>
+                  <span className="text-sm font-semibold" style={isActive ? { color: solution.color } : {}}>
+                    {solution.shortTitle}
+                  </span>
                 </TabsTrigger>
               );
             })}
@@ -74,7 +89,7 @@ export function SolutionsTabs({ className }: SolutionsTabsProps) {
                       <ul className="space-y-3">
                         {solution.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-3">
-                            <Check className="h-5 w-5 text-airdocs-blue flex-shrink-0 mt-0.5" />
+                            <Check className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: solution.color }} />
                             <span className="text-gray-700">{feature}</span>
                           </li>
                         ))}

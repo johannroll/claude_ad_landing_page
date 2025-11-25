@@ -9,6 +9,32 @@ import * as Icons from 'lucide-react';
 // Icon name mapping type
 type IconName = keyof typeof Icons;
 
+// Helper function to convert Tailwind gradient classes to color values
+function getGradientColors(gradient: string): { from: string; to: string } {
+  const colorMap: Record<string, string> = {
+    'emerald-500': '#10B981',
+    'teal-600': '#0D9488',
+    'blue-500': '#3B82F6',
+    'indigo-600': '#4F46E5',
+    'violet-500': '#8B5CF6',
+    'purple-600': '#9333EA',
+    'amber-500': '#F59E0B',
+    'orange-600': '#EA580C',
+    'pink-500': '#EC4899',
+    'rose-600': '#E11D48',
+    'cyan-500': '#06B6D4',
+  };
+
+  const parts = gradient.split(' ');
+  const fromColor = parts.find(p => p.startsWith('from-'))?.replace('from-', '') || 'blue-500';
+  const toColor = parts.find(p => p.startsWith('to-'))?.replace('to-', '') || 'indigo-600';
+
+  return {
+    from: colorMap[fromColor] || '#3B82F6',
+    to: colorMap[toColor] || '#4F46E5',
+  };
+}
+
 interface FeatureCardProps {
   title: string;
   description: string;
@@ -19,6 +45,8 @@ interface FeatureCardProps {
   index?: number;
   onClick?: () => void;
   href?: string;
+  color?: string;
+  gradient?: string;
 }
 
 export function FeatureCard({
@@ -31,6 +59,8 @@ export function FeatureCard({
   index = 0,
   onClick,
   href,
+  color,
+  gradient,
 }: FeatureCardProps) {
   const Container = animated ? motion.div : 'div';
   const animationProps = animated
@@ -56,11 +86,29 @@ export function FeatureCard({
       )}
     >
       <CardHeader>
-        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-airdocs-onahau text-airdocs-blue transition-all duration-300 group-hover:bg-airdocs-blue group-hover:text-white">
+        <div
+          className={cn(
+            "mb-4 flex h-12 w-12 items-center justify-center rounded-lg transition-all duration-300",
+            !gradient && "bg-airdocs-onahau text-airdocs-blue group-hover:bg-airdocs-blue group-hover:text-white"
+          )}
+          style={
+            gradient
+              ? {
+                  background: `linear-gradient(to bottom right, ${getGradientColors(gradient).from}, ${getGradientColors(gradient).to})`,
+                  color: 'white',
+                }
+              : color
+              ? { backgroundColor: `${color}20`, color: color }
+              : {}
+          }
+        >
           {IconComponent && <IconComponent className="h-6 w-6" />}
           {iconComponent && iconComponent}
         </div>
-        <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-airdocs-blue transition-colors duration-300">
+        <CardTitle
+          className="text-xl font-bold text-gray-900 transition-colors duration-300"
+          style={color ? { ['--hover-color' as string]: color } : {}}
+        >
           {title}
         </CardTitle>
       </CardHeader>

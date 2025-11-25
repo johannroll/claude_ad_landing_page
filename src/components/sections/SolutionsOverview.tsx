@@ -29,6 +29,8 @@ export function SolutionsOverview({ className }: SolutionsOverviewProps) {
               icon={solution.icon}
               index={index}
               href={`#${solution.id}`}
+              color={solution.color}
+              gradient={solution.gradient}
             />
           ))}
         </div>

@@ -35,7 +35,23 @@ export function AspireFeature() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgb(0_0_0)_1px,transparent_0)] [background-size:40px_40px]" />
       </div>
 
-      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Top fade - fades from white to transparent */}
+      <div
+        className="absolute top-0 left-0 w-full h-24 pointer-events-none z-10"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(255, 255, 255, 1), transparent)'
+        }}
+      />
+
+      {/* Bottom fade - fades from white to transparent */}
+      <div
+        className="absolute bottom-0 left-0 w-full h-24 pointer-events-none z-10"
+        style={{
+          background: 'linear-gradient(to top, rgba(255, 255, 255, 1), transparent)'
+        }}
+      />
+
+      <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Left Side - Rating Display */}
           <div className="text-center lg:text-left">
