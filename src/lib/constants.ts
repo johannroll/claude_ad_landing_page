@@ -1,10 +1,9 @@
 /**
  * Base path configuration for deployment
- * Set to repository name for GitHub Pages, empty string for root domain
+ * Must match the basePath in next.config.ts
+ * Applied in both development and production
  */
-export const BASE_PATH = process.env.NODE_ENV === 'production'
-  ? '/claude_ad_landing_page'
-  : '';
+export const BASE_PATH = '/claude_ad_landing_page';
 
 /**
  * Get the full path for a public asset
