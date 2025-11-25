@@ -6,10 +6,8 @@ describe('Hero', () => {
   it('renders the main headline', () => {
     render(<Hero />);
     // Check for animated words
-    expect(screen.getByText('Transform')).toBeInTheDocument();
-    expect(screen.getByText(/Your/i)).toBeInTheDocument();
-    expect(screen.getByText('Customer')).toBeInTheDocument();
-    expect(screen.getByText(/Communications/i)).toBeInTheDocument();
+    expect(screen.getByText('Transform Your')).toBeInTheDocument();
+    expect(screen.getByText('Customer Communications')).toBeInTheDocument();
   });
 
   it('renders the subheading', () => {

@@ -6,105 +6,86 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface AnimatedWordProps {
   words: string[];
   className?: string;
+  animatedClassName?: string;
   delay?: number;
 }
 
-const fonts = [
-  'font-sans', // Inter (base)
-  'font-mono', // Monospace
-  'font-serif', // Serif
-  'font-sans', // Back to Inter
-];
-
-export function AnimatedWord({ words, className = '', delay = 0 }: AnimatedWordProps) {
+export function AnimatedWord({ words, className = '', animatedClassName = '', delay = 0 }: AnimatedWordProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [fontIndex, setFontIndex] = useState(0);
   const [hasAnimatedIn, setHasAnimatedIn] = useState(false);
 
-  useEffect(() => {
-    // Animate in the first word after a brief moment
-    const initialTimeout = setTimeout(() => {
-      setHasAnimatedIn(true);
-    }, 100);
+  // Calculate approximate width based on longest word
+  const longestWord = words.reduce((a, b) => (a.length > b.length ? a : b), '');
+  const approximateWidth = `${longestWord.length * 0.6}em`;
 
+  useEffect(() => {
     // Start the animation after the delay
     const startTimeout = setTimeout(() => {
-      // Word rotation interval (4 seconds)
+      // Mark as animated in when we start the interval
+      setHasAnimatedIn(true);
+
+      // Word rotation interval (6 seconds)
       const wordInterval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % words.length);
-      }, 4000);
+      }, 6000);
 
       return () => clearInterval(wordInterval);
     }, delay);
 
     return () => {
-      clearTimeout(initialTimeout);
       clearTimeout(startTimeout);
     };
   }, [words.length, delay]);
 
-  useEffect(() => {
-    // Font shuffle during transition
-    let fontShuffleInterval: NodeJS.Timeout;
-
-    // Start font shuffle slightly before word change
-    const shuffleTimeout = setTimeout(() => {
-      let shuffleCount = 0;
-      fontShuffleInterval = setInterval(() => {
-        setFontIndex((prev) => (prev + 1) % fonts.length);
-        shuffleCount++;
-
-        // Stop shuffling after going through all fonts
-        if (shuffleCount >= fonts.length) {
-          clearInterval(fontShuffleInterval);
-          setFontIndex(0); // Reset to base font
-        }
-      }, 150); // 150ms per font change
-    }, delay + 3500); // Start shuffle 500ms before word change
-
-    return () => {
-      clearTimeout(shuffleTimeout);
-      if (fontShuffleInterval) clearInterval(fontShuffleInterval);
-    };
-  }, [currentIndex, delay]);
+  // Determine which className to use based on whether we've animated in
+  const isFirstWord = currentIndex === 0 && !hasAnimatedIn;
+  const wordClassName = isFirstWord ? className : animatedClassName;
 
   return (
-    <span className={`inline-block align-baseline ${className}`}>
-      <span className="inline-block overflow-hidden relative" style={{ verticalAlign: 'baseline' }}>
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={`${words[currentIndex]}-${currentIndex}`}
-            initial={
-              hasAnimatedIn
-                ? {
-                    y: '100%',
-                    opacity: 0,
-                  }
-                : {
-                    y: 0,
-                    opacity: 1,
-                  }
-            }
-            animate={{
-              y: 0,
-              opacity: 1,
-            }}
-            exit={{
-              y: '-100%',
-              opacity: 0,
-            }}
-            transition={{
-              duration: 0.5,
-              ease: [0.4, 0.0, 0.2, 1], // Custom easing for slot machine effect
-              opacity: { duration: 0.3 },
-            }}
-            className={`inline-block ${fonts[fontIndex]} transition-all duration-150`}
-            style={{ display: 'inline-block' }}
-          >
-            {words[currentIndex]}
-          </motion.span>
-        </AnimatePresence>
-      </span>
+    <span
+      className="inline-block overflow-hidden relative"
+      style={{
+        verticalAlign: 'baseline',
+        minWidth: approximateWidth,
+        height: '1em',
+      }}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={currentIndex}
+          initial={
+            hasAnimatedIn
+              ? {
+                  y: '100%',
+                  opacity: 0,
+                }
+              : {
+                  y: 0,
+                  opacity: 1,
+                }
+          }
+          animate={{
+            y: 0,
+            opacity: 1,
+          }}
+          exit={{
+            y: '-100%',
+            opacity: 0,
+          }}
+          transition={{
+            duration: 0.6,
+            ease: [0.25, 0.46, 0.45, 0.94],
+          }}
+          className={`block text-center leading-[inherit] ${wordClassName}`}
+          style={{
+            minWidth: approximateWidth,
+            height: '1em',
+            willChange: 'transform',
+          }}
+        >
+          {words[currentIndex]}
+        </motion.span>
+      </AnimatePresence>
     </span>
   );
 }

@@ -34,6 +34,14 @@ export function Hero({ className }: HeroProps) {
             background: 'radial-gradient(circle at center, transparent 0%, rgba(255, 255, 255, 0.3) 40%, white 80%)',
           }}
         />
+
+        {/* Top and Bottom Fade */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, white 0%, transparent 15%, transparent 85%, white 100%)',
+          }}
+        />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
@@ -58,21 +66,19 @@ export function Hero({ className }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-normal"
         >
           <AnimatedWord
-            words={['Transform', 'Revolutionize', 'Elevate', 'Streamline']}
-            className="bg-gradient-to-r from-airdocs-blue to-airdocs-blue-light bg-clip-text text-transparent"
-            delay={1000}
-          />{' '}
-          Your{' '}
-          <AnimatedWord
-            words={['Customer', 'Business', 'Digital', 'Document']}
-            className="bg-gradient-to-r from-airdocs-blue to-airdocs-blue-light bg-clip-text text-transparent"
-            delay={1500}
-          />{' '}
-          <span className="bg-gradient-to-r from-airdocs-blue to-airdocs-blue-light bg-clip-text text-transparent">
-            Communications
+            words={[
+              'Transform Your',
+              'Revolutionize Your',
+              'Elevate Your',
+              'Streamline Your'
+            ]}
+            delay={2000}
+          />
+          <span className="bg-gradient-to-r from-airdocs-blue via-airdocs-blue-light to-airdocs-magenta bg-clip-text text-transparent ml-2">
+            Customer Communications
           </span>
         </motion.h1>
 
