@@ -14,12 +14,6 @@ export function TrustedBy({ className }: TrustedByProps) {
   return (
     <section className={`py-16 bg-white ${className || ''}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-8">
-            Trusted By
-          </h2>
-        </div>
-
         <LogoCloud
           clients={featuredClients}
           conveyorBelt={true}

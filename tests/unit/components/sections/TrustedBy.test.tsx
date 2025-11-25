@@ -22,11 +22,6 @@ vi.mock('@/data/clients', () => ({
 }));
 
 describe('TrustedBy', () => {
-  it('renders the "Trusted By" heading', () => {
-    render(<TrustedBy />);
-    expect(screen.getByText(/Trusted By/i)).toBeInTheDocument();
-  });
-
   it('calls getFeaturedClients to get client data', () => {
     const spy = vi.spyOn(clientsData, 'getFeaturedClients');
     render(<TrustedBy />);
