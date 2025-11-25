@@ -33,18 +33,25 @@ const stats: Stat[] = [
 ];
 
 export function AboutSection() {
+  const statColors = [
+    'from-airdocs-citrus to-airdocs-amber',
+    'from-airdocs-blue to-airdocs-blue-light',
+    'from-airdocs-spray to-airdocs-onahau',
+    'from-airdocs-magenta to-purple-500',
+  ];
+
   return (
     <section className="bg-white py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Side - Image/Visual */}
           <div className="relative">
-            <div className="relative h-[400px] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 lg:h-[500px]">
+            <div className="relative h-[400px] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-airdocs-blue via-airdocs-blue-light to-airdocs-spray shadow-2xl lg:h-[500px]">
               {/* Placeholder for company image/illustration */}
               <div className="flex h-full items-center justify-center">
                 <div className="text-center">
-                  <Building2 className="mx-auto mb-4 h-24 w-24 text-primary" />
-                  <p className="text-lg font-medium text-gray-600">
+                  <Building2 className="mx-auto mb-4 h-24 w-24 text-white drop-shadow-lg" />
+                  <p className="text-lg font-semibold text-white drop-shadow">
                     Airdocs Global Headquarters
                   </p>
                 </div>
@@ -56,9 +63,9 @@ export function AboutSection() {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="rounded-xl bg-white p-4 text-center shadow-lg"
+                  className="rounded-xl bg-white p-4 text-center shadow-xl border border-gray-100"
                 >
-                  <div className="mb-2 flex justify-center text-primary">
+                  <div className={`mb-2 flex justify-center bg-gradient-to-br ${statColors[index]} bg-clip-text text-transparent`}>
                     {stat.icon}
                   </div>
                   <div className="mb-1 text-2xl font-bold text-gray-900">
@@ -72,15 +79,19 @@ export function AboutSection() {
 
           {/* Right Side - Content */}
           <div className="flex flex-col justify-center pt-12 lg:pt-0">
-            <div className="mb-4 inline-flex items-center gap-2 text-primary">
-              <div className="h-px w-8 bg-primary"></div>
-              <span className="text-sm font-semibold uppercase tracking-wider">
+            <div className="mb-4 inline-flex items-center gap-2">
+              <div className="h-px w-8 bg-gradient-to-r from-airdocs-blue to-airdocs-spray"></div>
+              <span className="text-sm font-semibold uppercase tracking-wider bg-gradient-to-r from-airdocs-blue to-airdocs-spray bg-clip-text text-transparent">
                 About Airdocs
               </span>
             </div>
 
             <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl">
-              Transforming Customer Communications Since 2008
+              Transforming Customer{' '}
+              <span className="bg-gradient-to-r from-airdocs-blue via-airdocs-blue-light to-airdocs-magenta bg-clip-text text-transparent">
+                Communications
+              </span>{' '}
+              Since 2008
             </h2>
 
             <div className="mb-6 space-y-4 text-lg text-gray-600">
@@ -106,7 +117,7 @@ export function AboutSection() {
               </p>
             </div>
 
-            <div className="mb-8 rounded-xl bg-primary/5 p-6">
+            <div className="mb-8 rounded-xl bg-gray-50 p-6 border border-gray-200 shadow-sm">
               <h3 className="mb-3 font-semibold text-gray-900">
                 Our Mission
               </h3>

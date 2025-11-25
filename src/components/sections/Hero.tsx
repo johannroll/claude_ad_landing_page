@@ -77,8 +77,11 @@ export function Hero({ className }: HeroProps) {
             ]}
             delay={0}
           />
-          <span className="bg-gradient-to-r from-airdocs-blue via-airdocs-blue-light to-airdocs-magenta bg-clip-text text-transparent ml-2">
-            Customer Communications
+          <span className="ml-2">
+            Customer{' '}
+            <span className="bg-gradient-to-r from-airdocs-blue via-airdocs-blue-light to-airdocs-magenta bg-clip-text text-transparent">
+              Communications
+            </span>
           </span>
         </motion.h1>
 

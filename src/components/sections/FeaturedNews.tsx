@@ -46,7 +46,7 @@ export function FeaturedNews({ className }: FeaturedNewsProps) {
           {/* Visual Side */}
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-              <div className="aspect-video bg-white/5 rounded-lg overflow-hidden">
+              <div className="relative aspect-video bg-white/5 rounded-lg overflow-hidden">
                 <video
                   className="w-full h-full object-cover rounded-lg"
                   autoPlay
@@ -57,6 +57,8 @@ export function FeaturedNews({ className }: FeaturedNewsProps) {
                   <source src="/claude_ad_landing_page/images/FullSizeRender.MP4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+                {/* Light tint overlay */}
+                <div className="absolute inset-0 bg-airdocs-blue/25 rounded-lg pointer-events-none"></div>
               </div>
 
               {/* Floating Stats */}
