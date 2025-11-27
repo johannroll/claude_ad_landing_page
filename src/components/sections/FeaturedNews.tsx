@@ -1,87 +1,132 @@
 'use client';
 
 import React from 'react';
-import { CTAButton } from '@/components/shared/CTAButton';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Palette, Zap, Send, Activity, Cloud } from 'lucide-react';
+import { Safari } from '@/components/ui/safari';
 
 interface FeaturedNewsProps {
   className?: string;
 }
 
 export function FeaturedNews({ className }: FeaturedNewsProps) {
+  const features = [
+    {
+      text: "Design compliant, on-brand documents and templates",
+      icon: Palette,
+      color: "#10B981" // emerald
+    },
+    {
+      text: "Automate generation and delivery using your source data",
+      icon: Zap,
+      color: "#F59E0B" // amber
+    },
+    {
+      text: "Reach clients via email, SMS, post, portals and digital signature",
+      icon: Send,
+      color: "#3B82F6" // blue
+    },
+    {
+      text: "Maintain realtime tracking, archiving and audit for every communication",
+      icon: Activity,
+      color: "#8B5CF6" // violet
+    },
+    {
+      text: "No new infrastructure or capital expenditure required – cloud-native, multi-tenant deployment",
+      icon: Cloud,
+      color: "#06B6D4" // cyan
+    }
+  ];
+
   return (
-    <section className={`py-16 bg-gradient-to-r from-airdocs-magenta to-airdocs-blue ${className || ''}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Content Side */}
-          <div className="text-white">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
-              <Sparkles className="h-4 w-4" />
-              <span className="text-sm font-semibold">New Feature</span>
+    <section className={`py-20 bg-gradient-to-br from-airdocs-magenta via-airdocs-blue to-airdocs-blue-light relative overflow-hidden ${className || ''}`}>
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-6 py-2.5 rounded-full mb-6 border border-white/20">
+            <Sparkles className="h-5 w-5 text-white" />
+            <span className="text-white font-semibold text-sm uppercase tracking-wide">Platform Overview</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            All In One Platform
+          </h2>
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            Centralize design, automation, and delivery of all customer communications from a single cloud platform.
+          </p>
+        </div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
+          {/* Large Video Card - Spans 2 columns and 2 rows */}
+          <div className="md:col-span-2 lg:row-span-2 bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/20 group hover:bg-white/15 transition-colors duration-300 overflow-hidden">
+            <div className="relative">
+              <Safari
+                url="app.airdocs.com"
+                videoSrc="/claude_ad_landing_page/images/featuredNews/Airdocs.MP4"
+                width={1000}
+                height={589}
+                className="w-full h-auto"
+              />
             </div>
+          </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Introducing Support at Home
-            </h2>
-
-            <p className="text-lg text-white/90 mb-6 leading-relaxed">
-              Empower your support teams with our new at-home solution. Streamline remote customer service operations with seamless communication tools and real-time collaboration features.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <CTAButton variant="secondary" size="md" href="#support-at-home">
-                Learn More
-              </CTAButton>
-              <CTAButton
-                variant="outline"
-                size="md"
-                href="#trial"
-                className="border-white bg-transparent text-white hover:bg-white hover:text-airdocs-blue"
+          {/* Feature Cards - Right column */}
+          {features.slice(0, 2).map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <div
+                key={index}
+                className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 group hover:bg-white/15 transition-all duration-300 hover:scale-105 flex flex-col justify-center"
               >
-                Try it Free
-              </CTAButton>
-            </div>
-          </div>
-
-          {/* Visual Side */}
-          <div className="relative">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-              <div className="relative aspect-video bg-white/5 rounded-lg overflow-hidden">
-                <video
-                  className="w-full h-full object-cover rounded-lg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                >
-                  <source src="/claude_ad_landing_page/images/FullSizeRender.MP4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                {/* Light tint overlay */}
-                <div className="absolute inset-0 bg-airdocs-blue/25 rounded-lg pointer-events-none"></div>
-              </div>
-
-              {/* Floating Stats */}
-              <div className="grid grid-cols-3 gap-4 mt-6">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-white">98%</div>
-                  <div className="text-xs text-white/80">Satisfaction</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-white">24/7</div>
-                  <div className="text-xs text-white/80">Availability</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-white">-40%</div>
-                  <div className="text-xs text-white/80">Response Time</div>
+                <div className="flex items-start gap-4">
+                  <div
+                    className="flex-shrink-0 w-12 h-12 rounded-xl backdrop-blur-sm flex items-center justify-center border group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+                    style={{
+                      backgroundColor: `${feature.color}20`,
+                      borderColor: `${feature.color}40`
+                    }}
+                  >
+                    <Icon className="h-6 w-6" style={{ color: feature.color }} strokeWidth={2.5} />
+                  </div>
+                  <p className="text-white font-semibold text-lg leading-relaxed flex-1">
+                    {feature.text}
+                  </p>
                 </div>
               </div>
-            </div>
+            );
+          })}
 
-            {/* Decorative Elements */}
-            <div className="absolute -z-10 top-10 -right-10 w-72 h-72 bg-airdocs-blue-light rounded-full blur-3xl opacity-30"></div>
-            <div className="absolute -z-10 -bottom-10 -left-10 w-72 h-72 bg-airdocs-spray rounded-full blur-3xl opacity-20"></div>
-          </div>
+          {/* Bottom row feature cards */}
+          {features.slice(2).map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <div
+                key={index + 2}
+                className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 group hover:bg-white/15 transition-all duration-300 hover:scale-105 flex flex-col justify-center"
+              >
+                <div className="flex items-start gap-4">
+                  <div
+                    className="flex-shrink-0 w-12 h-12 rounded-xl backdrop-blur-sm flex items-center justify-center border group-hover:scale-110 group-hover:rotate-6 transition-all duration-300"
+                    style={{
+                      backgroundColor: `${feature.color}20`,
+                      borderColor: `${feature.color}40`
+                    }}
+                  >
+                    <Icon className="h-6 w-6" style={{ color: feature.color }} strokeWidth={2.5} />
+                  </div>
+                  <p className="text-white font-semibold text-lg leading-relaxed flex-1">
+                    {feature.text}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

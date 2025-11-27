@@ -24,7 +24,6 @@ export const solutions: Solution[] = [
     longDescription:
       'Streamline your customer communications with our intelligent correspondence management system. Create, manage, and deliver personalized communications at scale with ease.',
     features: [
-      'AI-powered content generation',
       'Template management system',
       'Multi-language support',
       'Brand consistency controls',

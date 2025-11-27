@@ -24,10 +24,10 @@ export function AnimatedWord({ words, className = '', animatedClassName = '', de
       // Mark as animated in when we start the interval
       setHasAnimatedIn(true);
 
-      // Word rotation interval (6 seconds)
+      // Word rotation interval (3 seconds)
       const wordInterval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % words.length);
-      }, 6000);
+      }, 3000);
 
       return () => clearInterval(wordInterval);
     }, delay);

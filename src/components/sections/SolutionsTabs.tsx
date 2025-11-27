@@ -112,40 +112,28 @@ export function SolutionsTabs({ className }: SolutionsTabsProps) {
                     <div className={`bg-gradient-to-br ${solution.gradient} rounded-2xl p-8 shadow-2xl`}>
                       <div className="bg-white rounded-lg p-6 shadow-lg">
                         <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
-                          {/* Video or placeholder for solution */}
-                          {['correspondence', 'agreements', 'letters', 'delivery'].includes(solution.id) ? (
-                            <video
-                              className="w-full h-full object-cover rounded-lg"
-                              autoPlay
-                              muted
-                              loop
-                              playsInline
-                              key={solution.id}
-                            >
-                              <source
-                                src={`/claude_ad_landing_page/images/exploreOurSolutions/${
-                                  solution.id === 'correspondence' ? 'Email' :
-                                  solution.id === 'agreements' ? 'Agreement' :
-                                  solution.id === 'letters' ? 'Letter' :
-                                  'Delivery'
-                                }.mp4`}
-                                type="video/mp4"
-                              />
-                              Your browser does not support the video tag.
-                            </video>
-                          ) : (
-                            <div className="flex items-center justify-center h-full">
-                              <div className="text-center">
-                                <div className={`inline-flex p-6 rounded-full bg-gradient-to-br ${solution.gradient}`}>
-                                  {(() => {
-                                    const IconComponent = Icons[solution.icon as IconName] as React.ComponentType<{ className?: string }>;
-                                    return <IconComponent className="h-16 w-16 text-white" />;
-                                  })()}
-                                </div>
-                                <p className="mt-4 text-sm text-gray-500">{solution.shortTitle} Solution</p>
-                              </div>
-                            </div>
-                          )}
+                          {/* Video for all solutions */}
+                          <video
+                            className="w-full h-full object-cover rounded-lg"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            key={solution.id}
+                          >
+                            <source
+                              src={`/claude_ad_landing_page/images/exploreOurSolutions/${
+                                solution.id === 'correspondence' ? 'Correspondence' :
+                                solution.id === 'agreements' ? 'Agreement' :
+                                solution.id === 'letters' ? 'Letters' :
+                                solution.id === 'delivery' ? 'Delivery' :
+                                solution.id === 'sms' ? 'SMS' :
+                                'Cloud'
+                              }.mp4`}
+                              type="video/mp4"
+                            />
+                            Your browser does not support the video tag.
+                          </video>
                         </div>
                       </div>
                     </div>
